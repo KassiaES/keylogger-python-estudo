@@ -1,0 +1,55 @@
+# Keylogger Python
+
+## Arquivos e pastas ignorados
+
+# Ambiente virtual Python
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs gerados pelo keylogger
+log.txt
+resultado.txt
+*.log
+
+# Arquivos Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Temporários
+*.tmp
+*.temp
