@@ -15,6 +15,9 @@ log.txt
 resultado.txt
 *.log
 
+# Configurações de email (SEGURANÇA)
+config_email.py
+
 # Arquivos Python
 __pycache__/
 *.py[cod]
@@ -53,3 +56,5 @@ Thumbs.db
 # Temporários
 *.tmp
 *.temp
+# Snyk Security Extension - AI Rules (auto-generated)
+.github\instructions\snyk_rules.instructions.md

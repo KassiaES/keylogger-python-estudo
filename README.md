@@ -41,6 +41,9 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```powershell
 # Com o ambiente virtual ativado
 pip install pynput
+
+# Para versão com envio de email (opcional)
+pip install secure-smtplib
 ```
 
 ### 4. Verificar instalação
@@ -50,11 +53,57 @@ python -c "import pynput; print('pynput instalado com sucesso!')"
 
 ## 🚀 Como Usar
 
-### Executar o Keylogger
+### Executar o Keylogger Básico
 ```powershell
 # Com o ambiente virtual ativado
 python keylogger.py
 ```
+
+### 📧 Executar o Keylogger com Envio de Email
+```powershell
+# 1. Configure suas credenciais de email
+cp config_email.example.py config_email.py
+
+# 2. Edite config_email.py com suas informações:
+# - Seu email Gmail
+# - App Password do Google (não a senha normal)
+# - Intervalo de envio desejado
+
+# 3. Execute o keylogger com email
+python keylogger_email.py
+```
+
+### 🔍 Execução Invisível (Modo Stealth)
+Para estudos avançados de segurança, você pode executar o keylogger de forma invisível:
+
+```powershell
+# 1. Renomear o arquivo para .pyw (Python Window - sem console)
+ren .\keylogger.py .keylogger.pyw
+# OU para a versão com email:
+ren .\keylogger_email.py .keylogger_email.pyw
+
+# 2. Executar de forma invisível (sem janela do terminal)
+python .keylogger.pyw
+# OU:
+python .keylogger_email.pyw
+```
+
+**Como funciona:**
+- **`.pyw`**: Extensão especial do Python que executa scripts sem mostrar janela do console
+- **Processo em background**: O keylogger roda silenciosamente em segundo plano
+- **Sem feedback visual**: Não há mensagens no terminal (mais realista para estudos de segurança)
+
+**Para voltar ao modo normal:**
+```powershell
+# Renomear de volta para .py
+ren .\.keylogger.pyw .\keylogger.py
+ren .\.keylogger_email.pyw .\keylogger_email.py
+```
+
+⚠️ **Atenção**: Use o modo invisível apenas para:
+- Estudos controlados de segurança
+- Demonstrações educacionais autorizadas
+- Testes em sistemas próprios
 
 ### Operação
 1. **Início**: O programa exibe "Keylogger iniciado. Pressione ESC para parar."
@@ -71,14 +120,51 @@ python keylogger.py
 
 ```
 Keylogger/
-├── .venv/                 # Ambiente virtual Python
-├── .github/               # Configurações do GitHub
-├── keylogger.py           # Script principal
-├── log.txt                # Arquivo de logs (criado automaticamente)
-└── README.md              # Este arquivo
+├── .venv/                     # Ambiente virtual Python
+├── .github/                   # Configurações do GitHub
+├── keylogger.py               # Script básico do keylogger
+├── keylogger_email.py         # Keylogger com envio de email
+├── config_email.example.py    # Exemplo de configuração de email
+├── config_email.py            # Suas credenciais (não incluído no Git)
+├── log.txt                    # Arquivo de logs (criado automaticamente)
+└── README.md                  # Este arquivo
 ```
 
 ## 🔧 Funcionalidades
+
+### Versão Básica (`keylogger.py`)
+- ✅ Captura teclas em tempo real
+- ✅ Salva em arquivo local (`log.txt`)
+- ✅ Para com a tecla ESC
+- ✅ Sobreescreve logs a cada execução
+
+### Versão com Email (`keylogger_email.py`)
+- ✅ Todas as funcionalidades da versão básica
+- ✅ **Envio automático por email** a cada 5 minutos
+- ✅ **Envio de logs finais** ao pressionar ESC
+- ✅ **Timestamp** em cada email
+- ✅ **Configuração segura** de credenciais
+- ✅ **Suporte a App Passwords** do Google
+
+### 📧 Configuração do Email (Gmail)
+
+1. **Criar conta de teste:**
+   - Crie um Gmail específico para testes (ex: `testkeylogger@gmail.com`)
+
+2. **Habilitar verificação em duas etapas:**
+   - Acesse: Google Account → Security → 2-Step Verification
+   - Ative a verificação em duas etapas
+
+3. **Gerar App Password:**
+   - Acesse: https://myaccount.google.com/apppasswords
+   - Crie uma senha de app para "Python Keylogger"
+   - Use essa senha no arquivo `config_email.py`
+
+4. **Configurar credenciais:**
+   ```powershell
+   cp config_email.example.py config_email.py
+   # Edite config_email.py com suas informações
+   ```
 
 ### Teclas Capturadas
 - **Caracteres alfanuméricos**: a-z, A-Z, 0-9
@@ -113,32 +199,17 @@ Keylogger/
 - Use apenas em redes seguras e isoladas
 - Considere as implicações de privacidade
 
-## 🐛 Solução de Problemas
 
-### Python não encontrado
-```powershell
-# Verificar se Python está instalado
-python --version
+## 🎓 Objetivos Educacionais
 
-# Se não estiver, baixe em: https://python.org/downloads/
-```
+- Compreender como funciona a captura de entrada do usuário
+- Aprender sobre bibliotecas de monitoramento em Python
+- **Estudar protocolos de email (SMTP) em Python**
+- **Entender autenticação segura em aplicações**
+- **Praticar envio automatizado de dados**
+- Desenvolver consciência sobre segurança e privacidade
+- Praticar boas práticas de desenvolvimento em Python
 
-### Erro de permissão de scripts
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### Biblioteca pynput não funciona
-```powershell
-# Reinstalar a biblioteca
-pip uninstall pynput
-pip install pynput
-```
-
-### Keylogger não captura teclas
-- Execute como administrador
-- Verifique antivírus (pode bloquear)
-- Confirme se o ambiente virtual está ativado
-
+---
 
 **Lembre-se**: Com grandes poderes vêm grandes responsabilidades. Use este conhecimento de forma ética e responsável! 🛡️
