@@ -120,14 +120,15 @@ ren .\.keylogger_email.pyw .\keylogger_email.py
 
 ```
 Keylogger/
-├── .venv/                     # Ambiente virtual Python
-├── .github/                   # Configurações do GitHub
-├── keylogger.py               # Script básico do keylogger
-├── keylogger_email.py         # Keylogger com envio de email
-├── config_email.example.py    # Exemplo de configuração de email
-├── config_email.py            # Suas credenciais (não incluído no Git)
-├── log.txt                    # Arquivo de logs (criado automaticamente)
-└── README.md                  # Este arquivo
+├── .venv/                          # Ambiente virtual Python
+├── .github/                        # Configurações do GitHub
+├── keylogger.py                    # Script básico do keylogger
+├── keylogger_email.py              # Keylogger com envio de email
+├── config_email.example.py         # Exemplo de configuração de email
+├── config_email.py                 # Suas credenciais (não incluído no Git)
+├── log.txt                         # Arquivo de logs (criado automaticamente)
+├── PROTECAO_CONTRA_KEYLOGGERS.txt  # Guia completo de proteção e sandboxing
+└── README.md                       # Este arquivo
 ```
 
 ## 🔧 Funcionalidades
